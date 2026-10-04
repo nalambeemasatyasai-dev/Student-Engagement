@@ -15,10 +15,11 @@ sys.path.append(SCRIPT_DIR)
 BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 wacv_data_dir = os.path.join(BASE_DIR, "WACV data")
 
-#path to WACV image folders
-path1 = os.path.join(wacv_data_dir, "dataset", "1")
-path2 = os.path.join(wacv_data_dir, "dataset", "2")
-path3 = os.path.join(wacv_data_dir, "dataset", "3")
+#path to WACV image folders (Classes 0, 1, 2)
+path1 = os.path.join(wacv_data_dir, "0")
+path2 = os.path.join(wacv_data_dir, "1")
+path3 = os.path.join(wacv_data_dir, "2")
+
 
 df_OF0 = pd.read_csv(os.path.join(wacv_data_dir, "processedData0.csv"))
 df_OF1 = pd.read_csv(os.path.join(wacv_data_dir, "processedData1.csv"))
