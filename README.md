@@ -102,9 +102,14 @@ Student-Engagement-main/
 
 ## ⚙️ 3. Environment Setup & Installation
 
-### Step 1: Clone or Extract Repository
-```powershell
-cd "c:\Users\golla\Downloads\Student-Engagement-main\Student-Engagement-main"
+### Step 1: Navigate to Your Extracted Repository
+In PowerShell, Command Prompt, or Linux/macOS terminal, navigate to wherever you extracted or cloned the project:
+```bash
+# Windows:
+cd "C:\path\to\your\Student-Engagement-main"
+
+# Linux / macOS:
+cd "/path/to/your/Student-Engagement-main"
 ```
 
 ### Step 2: Create a Virtual Environment (Recommended)
@@ -121,7 +126,26 @@ pip install numpy pandas scikit-learn xgboost optuna matplotlib mediapipe pillow
 
 ---
 
+### 📁 3.1 Path Configuration Guide (Where to Change Paths)
+
+> **Important**: **You do NOT need to modify file paths inside any Python code.** All Python scripts in `DL_models/`, `ML_models/`, `AU_mappings/`, and `Feature_extract/` use dynamic relative paths (`os.path.dirname(__file__)`) and resolve automatically on any machine.
+
+The **ONLY** places where paths depend on your system:
+1. **Your Local Terminal**:
+   Always run commands from your project root folder:
+   `cd "path\to\your\Student-Engagement-main"`
+2. **Google Colab Notebook ([Student_Engagement_Pipeline.ipynb](Student_Engagement_Pipeline.ipynb) — Cell 1)**:
+   If running on Google Colab, upload the repository folder to your Google Drive and set the path in Cell 1 to match your Drive folder:
+   ```python
+   # In Cell 1 of Student_Engagement_Pipeline.ipynb:
+   colab_dir = '/content/drive/MyDrive/<YOUR_PROJECT_FOLDER_NAME>'
+   ```
+   *(If you run locally in VS Code or JupyterLab, Cell 1 auto-detects local execution with zero changes needed!)*
+
+---
+
 ## 🚀 4. Step-by-Step Execution Guide
+
 
 Follow this sequential workflow to reproduce or test any stage of the project:
 
