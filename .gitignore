@@ -20,6 +20,10 @@ env/
 .vscode/
 .idea/
 
+# Duplicate checkpoints from train_files
+DL_models/train_files/hyper-1/
+
 # Scratch and temporary logs
 *.log
 scratch/
+
