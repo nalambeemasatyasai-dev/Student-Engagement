@@ -344,7 +344,7 @@ For thesis presentation, guide evaluations, or production deployment where at le
   * Fixed evaluation sampling to accurately validate on all 504 unseen validation samples.
   * Added continuous disk-checkpointing to avoid losing models during training.
   * Structured results export to [Results/DL/evaluation_metrics_valset.csv](Results/DL/evaluation_metrics_valset.csv).
-* **Team Members**: Add team member names, roles, and university department details here.
+* **Team Members**: Nalam Beema Satya Sai, Parchuri Sushma, Narra Anjali
 
 ---
 
