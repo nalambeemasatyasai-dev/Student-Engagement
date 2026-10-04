@@ -173,7 +173,19 @@ cd ..
 
 ---
 
-### Step 4.2: Classical Machine Learning Training & Evaluation
+### Step 4.2: Facial Action Unit (AU) Mapping & Heatmaps
+
+Compute conditional probabilities, relative activation ratios, and statistical discriminative scores between Action Units and student engagement levels:
+```powershell
+cd AU_mappings
+python AU_mapping_display.py
+cd ..
+```
+* **Output**: Generates 4 publication-quality figures (`CondProb_AU_mapping.pdf`, `Relative_AU_mapping.pdf`, `SDC_Scores.pdf`, and line plots) inside `Results/AU_features/`.
+
+---
+
+### Step 4.3: Classical Machine Learning Training & Evaluation
 
 Train the 5 classical ML algorithms (Random Forest, XGBoost, Decision Tree, SVM, Gradient Boosting):
 ```powershell
@@ -186,7 +198,7 @@ cd ..
 
 ---
 
-### Step 4.3: Deep Learning Model Training (PyTorch + Optuna HPO)
+### Step 4.4: Deep Learning Model Training (PyTorch + Optuna HPO)
 
 Each deep learning model has its own dedicated script inside `DL_models/train_files/`. The scripts run Optuna Bayesian hyperparameter search (20 trials, up to 100 epochs per trial, early stopping patience = 5) and continuously save the best checkpoint to `DL_models/hyper-1/`:
 
@@ -216,7 +228,7 @@ cd ..\..
 
 ---
 
-### Step 4.4: Model Evaluation
+### Step 4.5: Model Evaluation
 
 To evaluate all trained models on the **504 unseen validation images**:
 ```powershell
@@ -255,7 +267,16 @@ EfficientNet_IFOF 1.083897  0.456349   0.208255 0.456349 0.285995
 
 ---
 
-### Step 4.5: Visualizations & Explainability
+### Step 4.6: Master Execution Notebook (Google Colab & Jupyter)
+
+For running the complete end-to-end pipeline sequentially or presenting to your academic guide:
+* **File**: [Student_Engagement_Pipeline.ipynb](Student_Engagement_Pipeline.ipynb)
+* **Interactive & Clean**: Contains sequential cells with pure CLI commands (`!python ...`), only section headings, and automatic inline display of generated Action Unit heatmaps and ROC curve plots.
+* **Ready to Run**: Execute cell-by-cell in Google Colab or VS Code. Results, checkpoints, and metrics are automatically displayed in the output and saved into `Results/` and `DL_models/hyper-1/`.
+
+---
+
+### Step 4.7: Visualizations & Explainability
 
 1. **Plot Optuna Training History**:
    ```powershell
@@ -265,14 +286,6 @@ EfficientNet_IFOF 1.083897  0.456349   0.208255 0.456349 0.285995
 2. **Grad-CAM Attention Heatmaps**:
    Open and execute [DL_models/Visualize_gradcam.ipynb](DL_models/Visualize_gradcam.ipynb) in Jupyter or VS Code to visualize the facial regions (eyes, eyebrows, mouth) the CNN focuses on when predicting engagement.
 
----
-
-### Step 4.6: Interactive Presentation Notebook (Google Colab / Jupyter)
-
-For presenting to your academic guide or running in Google Colab / Google Drive:
-* **File**: [Student_Engagement_Pipeline.ipynb](Student_Engagement_Pipeline.ipynb)
-* **Pre-Saved Outputs**: All cell execution streams, model evaluation summaries, checkpoint validations, and the benchmark comparison bar chart are **pre-rendered and permanently saved inside the notebook**.
-* **Zero Setup Required**: Anyone opening this file on Google Colab, GitHub, or VS Code can view every result immediately without executing a single cell.
 
 ---
 
