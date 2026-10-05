@@ -161,9 +161,22 @@ flowchart LR
 
 ---
 
-### Step 4.1: Feature Extraction (Optional if `merged_data*.csv` already exists)
+### Step 4.1: Feature Extraction (MediaPipe & OpenFace Merging)
 
-If you are adding new images or regenerating features:
+> [!NOTE]
+> **Why is OpenFace Pre-extracted? How Was It Generated?**
+> * **How the Author Generated It**: The author compiled OpenFace (a C++ binary library) in a dedicated Ubuntu 18.04 Linux environment once beforehand using [Extract_OpenFace_features.ipynb](Feature_extract/Extract_OpenFace_features.ipynb) and batch-processed the entire image dataset. The resulting Action Unit and gaze CSVs are included pre-extracted in `WACV data/processed0/` through `processed2/` and `processedData0.csv` to `processedData2.csv`.
+> * **Platform Independence**: OpenFace requires C++ build tools (`g++-8`, `cmake`, CUDA 10) and cannot run via standard `pip install` on Windows or modern Colab. Therefore, pre-extracted CSVs are provided so you don't need to spend 45 minutes compiling C++ libraries.
+> * **What `Extract_MediaPipe_features.py` Does**: It extracts 468 3D facial landmarks natively in Python using Google MediaPipe and merges them with the pre-extracted OpenFace tables into `merged_data0.csv`, `merged_data1.csv`, and `merged_data2.csv`.
+
+> [!TIP]
+> **What Happens When Given a New / Random Image for Testing?**
+> * **Scenario 1 — Image-Only Models (`ResNet_IF` & `EfficientNet_IF`)**:
+>   **No OpenFace or MediaPipe features are needed at all!** The raw image pixels are passed directly into the CNN backbone to predict the engagement class (`0`, `1`, or `2`). This is why the author built the `_IF` models—for fast, real-time webcam inference without any feature extraction dependencies.
+> * **Scenario 2 — Multimodal DL (`IFOF`) & Classical ML**:
+>   Requires both visual and tabular features (709-D vector). For a brand new image, MediaPipe extracts 3D landmarks natively in Python, while Action Units/gaze are extracted via the compiled OpenFace binary (`./FaceLandmarkImg -f <new_image.jpg>`) or pure Python AU extractors like `py-feat`.
+
+If you are regenerating features or updating landmark points:
 ```powershell
 cd Feature_extract
 python Extract_MediaPipe_features.py

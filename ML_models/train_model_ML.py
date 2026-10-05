@@ -23,7 +23,7 @@ BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 
 parser = argparse.ArgumentParser(description="Train classical ML models for student engagement detection")
 parser.add_argument("--data_dir", type=str, default=os.path.join(BASE_DIR, "WACV data"), help="Path to WACV data directory")
-parser.add_argument("--output_dir", type=str, default=os.path.join(BASE_DIR, "Results"), help="Path to save results and plots")
+parser.add_argument("--output_dir", type=str, default=os.path.join(BASE_DIR, "Results", "ML"), help="Path to save results and plots")
 parser.add_argument("--model_dir", type=str, default=os.path.join(SCRIPT_DIR, "trained_models"), help="Path to save trained models")
 args, _ = parser.parse_known_args()
 

@@ -213,7 +213,7 @@ def objective(trial):
 
 # Run the hyperparameter optimization
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=5)
+study.optimize(objective, n_trials=20)
 
 # Save the study object
 for save_d in SAVE_DIRS:

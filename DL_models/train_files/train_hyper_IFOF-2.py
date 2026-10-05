@@ -348,7 +348,7 @@ def objective(trial):
 
 # Run the hyperparameter optimization
 study = optuna.create_study(direction='minimize')
-study.optimize(objective, n_trials=5)
+study.optimize(objective, n_trials=20)
 
 # Save the study object
 for save_d in SAVE_DIRS:
@@ -358,7 +358,7 @@ for save_d in SAVE_DIRS:
 print("\n" + "="*96)
 print("                      HYPERPARAMETER OPTIMIZATION COMPLETE!")
 print("="*96)
-print(f" Total Trials Completed : 5")
+print(f" Total Trials Completed : 20")
 print(f" Optimal Trial          : Trial #{study.best_trial.number + 1}")
 print(f" Lowest Validation Loss : {study.best_trial.value:.4f}")
 print(" Optimal Hyperparameters Selected:")
